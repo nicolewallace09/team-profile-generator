@@ -189,28 +189,28 @@ const addEmployee = () => {
 };
 
 
-// // function to generate HTML page file using file system 
-// const writeFile = data => {
-//     fs.writeFile('./dist/index.html', data, err => {
-//         // if there is an error 
-//         if (err) {
-//             console.log(err);
-//             return;
-//         // when the README has been created 
-//         } else {
-//             console.log("Your team profile has been successfully created! Please check out the index.html")
-//         }
-//     })
-// }; 
+// function to generate HTML page file using file system 
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        // if there is an error 
+        if (err) {
+            console.log(err);
+            return;
+        // when the README has been created 
+        } else {
+            console.log("Your team profile has been successfully created! Please check out the index.html")
+        }
+    })
+}; 
 
 addManager()
    .then(addEmployee)
-//   .then(teamArray => {
-//     return generatePage(teamArray);
-//   })
-//   .then(data => {
-//     return writeFile(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+  .then(teamArray => {
+    return generatePage(teamArray);
+  })
+  .then(data => {
+    return writeFile(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
