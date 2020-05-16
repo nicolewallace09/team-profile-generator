@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "app to create team profile generator ",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolewallace09/team-profile-generator.git"
+  },
+  "author": "Nicole Wallace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolewallace09/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/nicolewallace09/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
