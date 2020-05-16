@@ -25,7 +25,7 @@ test('gets employee email', () => {
 });
 
 // gets role from getRole()
-test('creates an employee object', () => {
+test('gets role of employee', () => {
     const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
 
     expect(employee.getRole()).toEqual("Employee");
