@@ -214,6 +214,5 @@ addManager()
     return writeFile(pageHTML);
   })
   .catch(err => {
-    const teamArr = generateHTML(err);
-    writeFile(teamArr); 
+    console.log(err);
   });

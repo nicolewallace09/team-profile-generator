@@ -33,7 +33,10 @@ body {
 }
 
 .container {
-    margin: 100px;
+    margin: 100px auto;
     justify-content: space-evenly;
+    display: flex;
+    
 }
+
 

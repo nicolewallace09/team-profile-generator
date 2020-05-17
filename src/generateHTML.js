@@ -128,7 +128,7 @@ generateHTML = (data) => {
         if (role === 'Intern') {
             const internCard = generateIntern(employee);
 
-            teamArray.push(internCard);
+            pageArray.push(internCard);
         }
         
     }
