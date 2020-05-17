@@ -1,5 +1,5 @@
 // link to page creation
-const generatePage = require('./src/page-template');
+const generateHTML = require('./src/generateHTML');
 
 // team profiles
 const Manager = require('./lib/Manager');
@@ -14,7 +14,7 @@ const inquirer = require('inquirer');
 const teamArray = []; 
 
 // start of manager prompts 
-const addManager = (team) => {
+const addManager = () => {
     return inquirer.prompt ([
         {
             type: 'input',
@@ -77,7 +77,7 @@ const addManager = (team) => {
     })
 };
 
-const addEmployee = (team) => {
+const addEmployee = () => {
     console.log(`
     =================
     Adding employees to the team
@@ -166,6 +166,7 @@ const addEmployee = (team) => {
         // data for employee types 
 
         let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
+        let employee; 
 
         if (role === "Engineer") {
             employee = new Engineer (name, id, email, github);
@@ -191,7 +192,7 @@ const addEmployee = (team) => {
 
 
 // function to generate HTML page file using file system 
-writeFile = data => {
+const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
         // if there is an error 
         if (err) {
@@ -206,12 +207,13 @@ writeFile = data => {
 
 addManager()
   .then(addEmployee)
-  .then(team => {
-    return generatePage(team);
+  .then(teamArray => {
+    return generateHTML(teamArray);
   })
   .then(pageHTML => {
     return writeFile(pageHTML);
   })
   .catch(err => {
-    console.log(err);
+    const teamArr = generateHTML(err);
+    writeFile(teamArr); 
   });

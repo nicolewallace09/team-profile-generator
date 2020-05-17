@@ -11,6 +11,13 @@ test('creates an employee object', () => {
 });
 
 // gets id from getId() 
+test('gets employee name', () => {
+    const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
+
+    expect(employee.getName()).toEqual(expect.any(String));
+});
+
+// gets id from getId() 
 test('gets employee ID', () => {
     const employee = new Employee('Nicole', 90, 'nicole.elisaw@gmail.com');
 

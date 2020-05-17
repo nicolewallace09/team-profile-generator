@@ -22,7 +22,7 @@ body {
 }
 
 
-.card-top{
+.card-header {
     background-color: var(--primary);
 }
 
