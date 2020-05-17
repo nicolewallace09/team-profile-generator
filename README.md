@@ -18,7 +18,8 @@ The user should clone the repository from GitHub and download Node. This applica
 ## Usage 
 Use inquirer from your command line to answer questions about your project.
 <img src="utils/README-GENERATOR (1).gif"><br>
-Or view link here - [Screencastify](https://drive.google.com/file/d/1L59uBnHWqkOiv5k9UkQEpBJuVX4CRidP/view)
+Or view link here - [Screencastify](https://drive.google.com/file/d/1tWZNaLaSKDgV-UohblVVEdnwex9nPzDj/view)<br>
+<img src="./assets/image/samplepage.png">
 
 ## License 
 This project is license under MIT
