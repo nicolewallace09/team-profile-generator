@@ -24,6 +24,7 @@ body {
 
 .card-header {
     background-color: var(--primary);
+    color: var(--secondary);
 }
 
 .card-body {

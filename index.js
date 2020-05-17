@@ -173,7 +173,7 @@ const addEmployee = () => {
 
             console.log(employee);
 
-        } else {
+        } else if (role === "Intern") {
             employee = new Intern (name, id, email, school);
 
             console.log(employee);
