@@ -1,19 +1,20 @@
+// link to page creation
+const generatePage = require('./src/page-template');
+
 // team profiles
-const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
-const Engineer= require('./lib/Engineer');
+const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern'); 
 
 // node modules 
 const fs = require('fs'); 
 const inquirer = require('inquirer');
-const generatePage = require("./src/page-template.js")
 
 // team array
 const teamArray = []; 
 
 // start of manager prompts 
-const addManager = () => {
+const addManager = (team) => {
     return inquirer.prompt ([
         {
             type: 'input',
@@ -72,12 +73,11 @@ const addManager = () => {
         const manager = new Manager (name, id, email, officeNumber);
 
         teamArray.push(manager); 
-
-        // console.log(manager)
+        console.log(manager); 
     })
 };
 
-const addEmployee = () => {
+const addEmployee = (team) => {
     console.log(`
     =================
     Adding employees to the team
@@ -162,27 +162,28 @@ const addEmployee = () => {
             default: false
         }
     ])
-    .then(teamData => {
+    .then(employeeData => {
         // data for employee types 
-        if (teamData.role === "Engineer") {
-            const  { name, id, email, github } = teamData; 
-            const engineer = new Engineer (name, id, email, github);
 
-            teamArray.push(engineer); 
-            console.log(engineer);
+        let { name, id, email, role, github, school, confirmAddEmployee } = employeeData; 
+
+        if (role === "Engineer") {
+            employee = new Engineer (name, id, email, github);
+
+            console.log(employee);
 
         } else {
-            const  { name, id, email, school } = teamData; 
-            const intern = new Intern (name, id, email, school);
+            employee = new Intern (name, id, email, school);
 
-            teamArray.push(intern);
-            console.log(intern);
+            console.log(employee);
+        }
 
-    }
-        if (teamData.confirmAddEmployee) {
+        teamArray.push(employee); 
+
+        if (confirmAddEmployee) {
             return addEmployee(teamArray); 
         } else {
-            return teamArray; 
+            return teamArray;
         }
     })
 
@@ -190,13 +191,13 @@ const addEmployee = () => {
 
 
 // function to generate HTML page file using file system 
-const writeFile = data => {
+writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
         // if there is an error 
         if (err) {
             console.log(err);
             return;
-        // when the README has been created 
+        // when the profile has been created 
         } else {
             console.log("Your team profile has been successfully created! Please check out the index.html")
         }
@@ -204,12 +205,12 @@ const writeFile = data => {
 }; 
 
 addManager()
-   .then(addEmployee)
-  .then(teamArray => {
-    return generatePage(teamArray);
+  .then(addEmployee)
+  .then(team => {
+    return generatePage(team);
   })
-  .then(data => {
-    return writeFile(data);
+  .then(pageHTML => {
+    return writeFile(pageHTML);
   })
   .catch(err => {
     console.log(err);

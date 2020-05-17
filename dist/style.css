@@ -21,3 +21,18 @@ body {
     font-size: 50px;
 }
 
+
+.card-top{
+    background-color: var(--primary);
+}
+
+.card-body {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+.container {
+    margin: 100px;
+    justify-content: space-evenly;
+}
+

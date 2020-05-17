@@ -1,25 +1,103 @@
 // create Manager card
 generateManager = (manager) => {
     return `
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <p>Manager</p>
+        </div>
+
+        <div class="card-body text-dark">
+            <h5 class="card-title">${manager.name}</h5>
+            <p class="card-text">
+            <p class="id">ID: ${manager.id}</p>
+            <p class="email>Email:<a href="mailto:${manager.email}">${manager.email}</a></p>
+            <p class="office">Office Number: ${manager.officeNumber}</p>
+            </p>
+        </div>
+    </div>
     `
 }
 
 // create Engineer card
 generateEngineer = (engineer) => {
     return `
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <p>Engineer</p>
+        </div>
+
+        <div class="card-body text-dark">
+            <h5 class="card-title">${engineer.name}</h5>
+            <p class="card-text">
+            <p class="id">ID: ${engineer.id}</p>
+            <p class="email>Email:<a href="mailto:${engineer.email}">${engineer.email}</a></p>
+            <p class="github">Github:<a href="https://github.com/${engineer.github}"</a></p>
+            </p>
+        </div>
+    </div>
     `
 }
 
 // create Intern card 
 generateIntern = (intern) => {
     return `
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <p>Intern</p>
+        </div>
+
+        <div class="card-body text-dark">
+            <h5 class="card-title">${intern.name}</h5>
+            <p class="card-text">
+            <p class="id">ID: ${intern.id}</p>
+            <p class="email>Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
+            <p class="github">Github: ${intern.github}</p>
+            </p>
+        </div>
+    </div>
     `
 };
 
-// generate html page 
-module.exports = templateData => {
-    const { manager, engineer, intern } = templateData; 
+generateHTML = (data) => {
 
+    // array for cards 
+    teamArray = []; 
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole(); 
+
+        if (role === 'Manager') {
+            const managerCard = generateManager(employee);
+
+            teamArray.push(managerCard);
+        }
+
+        if (role === 'Engineer') {
+            const engineerCard = generateEngineer(employee);
+
+            teamArray.push(engineerCard);
+        }
+
+        if (role === 'Intern') {
+            const internCard = generateIntern(employee);
+
+            teamArray.push(internCard);
+        }
+        
+    }
+
+    const employeeCards = teamArray.join('')
+
+    // return to generated page
+    generateTeam = generateHTML(employeeCards); 
+    return employeeCards;
+
+
+}
+
+// generate html page 
+generatePage = (employeeCards) => {   
   return`
     
     <!DOCTYPE html>
@@ -45,9 +123,7 @@ module.exports = templateData => {
             <div class="container">
                 <div class="row" id="team-cards">
                     <!--Team Cards-->
-                    ${generateManager(manager)}
-                    ${generateManager(engineer)}
-                    ${generateManager(intern)}
+                    ${employeeCards}
                 </div>
             </div>
         </main>
