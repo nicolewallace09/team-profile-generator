@@ -27,7 +27,7 @@ This project is license under MIT
 Contributors should read the installation section. 
 
 ## Tests
-npm test
+Run `npm test` to run Jest for tests on constructors. 
 
 ## Questions
 If you have any questions about this projects, please contact me directly at nicole.elisaw@gmail.com. You can view more of my projects at https://github.com/nicolewallace09.
